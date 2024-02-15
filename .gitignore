@@ -1,0 +1,15 @@
+# Ignorer les fichiers générés par le système d'exploitation
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de compilation
+*.o
+*.out
+
+# Ignorer les fichiers de configuration locaux
+.env
+
+# Ignorer les dépendances spécifiques à un langage ou à un environnement (par exemple, pour Python)
+/venv/
+/env/
+/node_modules/
