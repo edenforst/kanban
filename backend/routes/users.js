@@ -1,5 +1,5 @@
 import express from "express";
-const router = express.router();
+const router = express.Router();
 const usersController = require('../controllers/usersController');
 
 // Routes pour les utilisateurs
@@ -9,4 +9,4 @@ router.post('/', usersController.createUser);
 router.put('/:id', usersController.updateUser);
 router.delete('/:id', usersController.deleteUser);
 
-module.exports = router;
+export default router;

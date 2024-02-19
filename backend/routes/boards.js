@@ -3,10 +3,10 @@ const router = express.Router();
 const usersController = require('../controllers/boardsController');
 
 // Routes pour les tableaux
-router.get('/', boardsController.getAllUsers);
-router.get('/:id', boardsController.getUserById);
-router.post('/', boardsController.createUser);
-router.put('/:id', boardsController.updateUser);
-router.delete('/:id', boardsController.deleteUser);
+router.get('/', boardsController.getAllBoards);
+router.get('/:id', boardsController.getBoardById);
+router.post('/', boardsController.createBoard);
+router.put('/:id', boardsController.updateBoard);
+router.delete('/:id', boardsController.deleteBoard);
 
-module.exports = router;
+export default router;

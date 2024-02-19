@@ -1,10 +1,12 @@
 import express from "express";
+import { default as usersRoutes } from "../backend/routes/users.js";
+import { default as boardsRoutes } from "../backend/routes/boards.js";
+import { default as cardsRoutes } from "../backend/routes/cards.js";
+
 const app = express();
 const port = 3000;
 
-const usersRoutes = import('../routes/users');
-const boardsRoutes = import('../routes/boards');
-const cardsRoutes = import('../routes/cards');
+app.use(express.json());
 
 // Utilisation des routes
 app.use('/api/users', usersRoutes);

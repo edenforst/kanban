@@ -3,10 +3,10 @@ const router = express.Router();
 const usersController = require('../controllers/cardsController');
 
 // Routes pour les cartes
-router.get('/', cardsController.getAllUsers);
-router.get('/:id', cardsController.getUserById);
-router.post('/', cardsController.createUser);
-router.put('/:id', cardsController.updateUser);
-router.delete('/:id', cardsController.deleteUser);
+router.get('/', cardsController.getAllCards);
+router.get('/:id', cardsController.getCardById);
+router.post('/', cardsController.createCard);
+router.put('/:id', cardsController.updateCard);
+router.delete('/:id', cardsController.deleteCard);
 
-module.exports = router;
+export default router;
