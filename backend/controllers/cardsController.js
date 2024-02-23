@@ -1,4 +1,4 @@
-const Card = require('../models/card');
+import card from '../models/card.js';
 
 // CREATE - Création d'une nouvelle carte
 exports.createCard = async (req, res) => {

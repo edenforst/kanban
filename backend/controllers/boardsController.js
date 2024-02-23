@@ -1,4 +1,4 @@
-const Board = require('../models/board');
+//import board from '../models/board.js';
 
 // CREATE - Création d'un nouveau tableau
 exports.createBoard = async (req, res) => {

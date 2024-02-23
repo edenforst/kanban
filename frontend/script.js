@@ -75,3 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//create user
+document.addEventListener('DOMContentLoaded', () => {
+    const createCardBtn = document.getElementById('createUsr');
+    createCardBtn.addEventListener('click', () => {
+        // Afficher un formulaire modal pour ajouter une carte
+        const username = prompt('Entrez le nom :');
+        const password = prompt('Entrez le password :');
+        const role = prompt('Entrez le rôle :');
+    });
+});
+

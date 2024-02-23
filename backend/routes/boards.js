@@ -1,6 +1,7 @@
 import express from "express";
+import boardsController from '../controllers/boardsController';
+
 const router = express.Router();
-const usersController = require('../controllers/boardsController');
 
 // Routes pour les tableaux
 router.get('/', boardsController.getAllBoards);

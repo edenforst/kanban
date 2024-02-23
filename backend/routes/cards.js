@@ -1,6 +1,7 @@
 import express from "express";
+import cardsController from '../controllers/cardsController';
+
 const router = express.Router();
-const usersController = require('../controllers/cardsController');
 
 // Routes pour les cartes
 router.get('/', cardsController.getAllCards);
