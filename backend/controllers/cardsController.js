@@ -1,7 +1,7 @@
-import card from '../models/card.js';
+import Card from '../models/card.js';
 
 // CREATE - Création d'une nouvelle carte
-exports.createCard = async (req, res) => {
+export const createCard = async (req, res) => {
     try {
         const newCard = new Card(req.body);
         const savedCard = await newCard.save();
@@ -12,7 +12,7 @@ exports.createCard = async (req, res) => {
 };
 
 // READ - Récupérer toutes les cartes
-exports.getAllCards = async (req, res) => {
+export const getAllCards = async (req, res) => {
     try {
         const cards = await Card.find();
         res.json(cards);
@@ -22,7 +22,7 @@ exports.getAllCards = async (req, res) => {
 };
 
 // READ - Récupérer une carte par son ID
-exports.getCardById = async (req, res) => {
+export const getCardById = async (req, res) => {
     try {
         const card = await Card.findById(req.params.id);
         card ? res.json(card) : res.status(404).json({ message: 'Carte non trouvée' });
@@ -32,7 +32,7 @@ exports.getCardById = async (req, res) => {
 };
 
 // UPDATE - Mettre à jour une carte
-exports.updateCard = async (req, res) => {
+export const updateCard = async (req, res) => {
     try {
         const updatedCard = await Card.findByIdAndUpdate(req.params.id, req.body, { new: true });
         res.json(updatedCard);
@@ -42,7 +42,7 @@ exports.updateCard = async (req, res) => {
 };
 
 // DELETE - Supprimer une carte
-exports.deleteCard = async (req, res) => {
+export const deleteCard = async (req, res) => {
     try {
         await Card.findByIdAndDelete(req.params.id);
         res.json({ message: 'Carte supprimée' });
@@ -50,3 +50,5 @@ exports.deleteCard = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export default { createCard, getAllCards, getCardById, updateCard, deleteCard};

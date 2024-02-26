@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import * as mongoose from'mongoose';
 
 const cardSchema = new mongoose.Schema({
     title: { type: String, required: true },
@@ -10,4 +10,4 @@ const cardSchema = new mongoose.Schema({
 
 const Card = mongoose.model('Card', cardSchema);
 
-export default router;
+export default Card;

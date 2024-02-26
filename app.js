@@ -1,14 +1,21 @@
 import express from 'express';
 import mongoose from'mongoose';
-import userRouter from './backend/routes/users.js';
+
+import usersRouter from './backend/routes/users.js';
+import cardsRouter from './backend/routes/cards.js';
+import boardsRouter from './backend/routes/boards.js';
+
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/users', usersRouter);
+app.use('/cards', cardsRouter);
+app.use('/boards', boardsRouter);
+
 app.use(express.static('frontend'));
-app.use('/users', userRouter);
 app.get('/', (req, res) => {
     res.sendFile(join('public', 'index.html'));
 });

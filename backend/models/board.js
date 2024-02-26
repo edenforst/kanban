@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import * as mongoose from'mongoose';
 
 const boardSchema = new mongoose.Schema({
     title: { type: String, required: true },
@@ -9,4 +9,4 @@ const boardSchema = new mongoose.Schema({
 
 const Board = mongoose.model('Board', boardSchema);
 
-export default router;
+export default Board;

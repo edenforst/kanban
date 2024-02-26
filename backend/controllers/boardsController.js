@@ -1,7 +1,7 @@
-//import board from '../models/board.js';
+import Board from '../models/board.js';
 
 // CREATE - Création d'un nouveau tableau
-exports.createBoard = async (req, res) => {
+export const createBoard = async (req, res) => {
     try {
         const newBoard = new Board(req.body);
         const savedBoard = await newBoard.save();
@@ -12,7 +12,7 @@ exports.createBoard = async (req, res) => {
 };
 
 // READ - Récupérer tous les tableaux
-exports.getAllBoards = async (req, res) => {
+export const getAllBoards = async (req, res) => {
     try {
         const boards = await Board.find();
         res.json(boards);
@@ -22,7 +22,7 @@ exports.getAllBoards = async (req, res) => {
 };
 
 // READ - Récupérer un tableau par son ID
-exports.getBoardById = async (req, res) => {
+export const getBoardById = async (req, res) => {
     try {
         const board = await Board.findById(req.params.id);
         board ? res.json(board) : res.status(404).json({ message: 'Tableau non trouvé' });
@@ -32,7 +32,7 @@ exports.getBoardById = async (req, res) => {
 };
 
 // UPDATE - Mettre à jour un tableau
-exports.updateBoard = async (req, res) => {
+export const updateBoard = async (req, res) => {
     try {
         const updatedBoard = await Board.findByIdAndUpdate(req.params.id, req.body, { new: true });
         res.json(updatedBoard);
@@ -42,7 +42,7 @@ exports.updateBoard = async (req, res) => {
 };
 
 // DELETE - Supprimer un tableau
-exports.deleteBoard = async (req, res) => {
+export const deleteBoard = async (req, res) => {
     try {
         await Board.findByIdAndDelete(req.params.id);
         res.json({ message: 'Tableau supprimé' });
@@ -50,3 +50,5 @@ exports.deleteBoard = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export default { createBoard, getAllBoards, getBoardById, updateBoard, deleteBoard };
