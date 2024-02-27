@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const newPassword = registerForm.elements.newPassword.value;
         const role = registerForm.elements.role.value; // Récupérer la valeur du champ de rôle
         const response = await registerUser(newUsername, newPassword, role);
-        // Gérer la réponse du serveur et stocker le jeton JWT
     });
 });
 
@@ -31,6 +30,7 @@ async function loginUser(username, password) {
         });
         if (!response.ok) {
             throw new Error('Failed to login');
+            
         }
         const data = await response.json();
         const token = data.token;
