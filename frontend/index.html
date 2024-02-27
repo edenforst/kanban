@@ -6,26 +6,64 @@
     <title>看板 App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-    <body>
-        <h1>看板 App</h1>
-        <div class="board">
-            <div class="column" data-column="To Do">
-                <h2>To Do</h2>
-            </div>
-            <div class="column" data-column="In Progress">
-                <h2>In Progress</h2>
-            </div>
-            <div class="column" data-column="Done">
-                <h2>Done</h2>
-            </div>
+<body>
+    <h1>看板 App</h1>
+    <div class="board">
+        <div class="column" data-column="To Do">
+            <h2>To Do</h2>
         </div>
-        <button id="createUsr">Ajouter un utilisateur 👩‍💻</button>
-        <!-- Bouton pour créer une carte -->
-        <button id="createCardBtn">Ajouter une card 🎫</button>
+        <div class="column" data-column="In Progress">
+            <h2>In Progress</h2>
+        </div>
+        <div class="column" data-column="Done">
+            <h2>Done</h2>
+        </div>
+    </div>
 
-        <!-- Bouton pour créer un tableau (board) -->
-        <button id="createBoardBtn">Ajouter un tableau 📝</button> 
+    <!-- Formulaire pour ajouter un utilisateur -->
+    <form id="userForm">
+        <label for="username">Nom d'utilisateur:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" name="password" required>
+        <label for="role">Rôle:</label>
+        <select id="role" name="role">
+            <option value="admin">Admin</option>
+            <option value="scrum_master">Scrum Master</option>
+            <option value="user" selected>User</option>
+        </select>
+        <button type="submit">Ajouter un utilisateur 👩‍💻</button>
+    </form>
 
-        <script src="script.js"></script>
-    </body>
+    <!-- Formulaire pour ajouter une carte -->
+    <form id="cardForm">
+        <label for="cardTitle">Titre de la carte:</label>
+        <input type="text" id="cardTitle" name="cardTitle" required>
+        <label for="cardDescription">Description:</label>
+        <textarea id="cardDescription" name="cardDescription"></textarea>
+        <label for="cardColumn">Colonne:</label>
+        <select id="cardColumn" name="cardColumn">
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Done">Done</option>
+        </select>
+        <label for="boardId">ID du tableau:</label>
+        <input type="text" id="boardId" name="boardId" required>
+        <button type="submit">Ajouter une carte 🎫</button>
+    </form>
+
+    <!-- Formulaire pour ajouter un tableau -->
+    <form id="boardForm">
+        <label for="boardTitle">Titre du tableau:</label>
+        <input type="text" id="boardTitle" name="boardTitle" required>
+        <label for="boardDescription">Description:</label>
+        <textarea id="boardDescription" name="boardDescription"></textarea>
+        <label for="boardColumns">Colonnes:</label>
+        <input type="text" id="boardColumns" name="boardColumns" required>
+        <button type="submit">Ajouter un tableau 📝</button>
+    </form>
+
+    <script src="request.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>

@@ -1,5 +1,35 @@
 import User from '../models/user.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
+// LOGIN - Connexion d'un utilisateur
+export const loginUser = async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        // Rechercher l'utilisateur dans la base de données par nom d'utilisateur
+        const user = await User.findOne({ username });
+
+        // Vérifier si l'utilisateur existe
+        if (!user) {
+            return res.status(400).json({ message: 'Nom d\'utilisateur ou mot de passe incorrect' });
+        }
+
+        // Vérifier si le mot de passe est correct
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(400).json({ message: 'Nom d\'utilisateur ou mot de passe incorrect' });
+        }
+
+        // Générer un jeton JWT pour l'utilisateur
+        const token = jwt.sign({ userId: user._id, username: user.username }, 'your_secret_key', { expiresIn: '10m' });
+
+        // Renvoyer le jeton JWT au client
+        res.status(200).json({ token });
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur lors de la connexion' });
+    }
+};
 
 // CREATE - Création d'un nouvel utilisateur
 export const createUser = async (req, res) => {
@@ -74,4 +104,4 @@ export const deleteUser = async (req, res) => {
 };
 
 
-export default { createUser, getAllUsers, getUserById, updateUser, deleteUser };
+export default { loginUser, createUser, getAllUsers, getUserById, updateUser, deleteUser };
